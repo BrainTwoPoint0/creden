@@ -3,6 +3,7 @@ import { headers } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import { SubmitButton } from "./submit-button";
+import { log } from "console";
 
 export default function Login({
   searchParams,
@@ -45,6 +46,7 @@ export default function Login({
     });
 
     if (error) {
+      log(error);
       return redirect("/login?message=Could not authenticate user");
     }
 
